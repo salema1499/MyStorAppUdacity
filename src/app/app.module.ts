@@ -1,16 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ShardModule } from './shard/shard.module';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   
+  
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ShardModule,
+   
+  
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,19 @@
+.btn{
+    background-color: rgb(245, 245, 94);
+    position: absolute;
+    left: 30%;
+    text-align: center;
+    color: gray;
+    font-weight: 600;
+}
+.btn:hover{
+    background-color: gray;
+    color: rgb(245, 245, 94);;
+}
+.card-img-top{
+  border-radius: 10%;
+}
+.card{
+    border-radius:10% 10% 10% 10% ;
+    border: 4px solid rgb(218, 229, 179);
+}

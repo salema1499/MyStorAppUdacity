@@ -1,0 +1,20 @@
+.card{
+    position: relative;
+    top: 15vh;
+    width: 50%;
+    left: 45vh;
+}
+
+
+.back{
+    height: auto;
+   padding: 5px;
+    background-color: rgb(245, 245, 94);
+    color: gray;
+    text-align: center;
+    
+}
+.back:hover{
+    background-color: gray;
+    color:  rgb(245, 245, 94);
+}

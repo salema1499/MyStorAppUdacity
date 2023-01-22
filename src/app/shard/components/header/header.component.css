@@ -1,0 +1,18 @@
+ul{
+    display: flex;
+    justify-content: space-between;
+    color: red;
+}
+li{
+    font-size: 22px;
+  
+}
+.navbar{
+    background-color: gray;
+   
+    font-weight:600;
+}
+
+.nav-link{
+    color: rgb(241, 241, 107)
+}

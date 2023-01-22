@@ -1,0 +1,7 @@
+<div class="box mt-5">
+    <div class="row container">                 
+        <div class="col-12 col-md-6 col-lg-4 box2" *ngFor="let item of products" style="width: 50vh; height: auto; margin: 2vh;">
+        <app-productalone [product]="item" (item)="addtocart($event)"></app-productalone>
+        </div>
+    </div>
+ </div>
