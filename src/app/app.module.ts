@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { ShardModule } from './shard/shard.module';
     BrowserModule,
     AppRoutingModule,
     ShardModule,
+    ReactiveFormsModule
    
   
   

@@ -1,4 +1,5 @@
 import { Component,OnInit} from '@angular/core';
+import Product from 'src/app/models/product.model';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ProductsService } from '../../services/products.service';
 })
 export class AllproductsComponent {
 
-  products:any[]=[]
+  products:Product[]=[]
   cardpro:any[]=[]
    constructor(private services:ProductsService){
 

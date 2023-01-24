@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http'
 import { ProductsModule } from '../products/products.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartModule } from '../cart/cart.module';
 import { DonecheckoutModule } from '../donecheckout/donecheckout/donecheckout.module';
 
@@ -23,6 +23,7 @@ import { DonecheckoutModule } from '../donecheckout/donecheckout/donecheckout.mo
     FormsModule,
     CartModule,
     DonecheckoutModule,
+    ReactiveFormsModule
     
     
   ],

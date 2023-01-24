@@ -5,6 +5,7 @@
     background-color: rgb(245, 245, 94);
     color: gray;
     text-align: center;
+
     
 }
 .back:hover{
@@ -14,4 +15,9 @@
 .text-body{
     text-decoration: none;
     color: gray;
+}
+
+
+.btn{
+    margin: 5px;
 }

@@ -13,27 +13,32 @@ export class CartComponent{
    
   cardpro:any[]=[]
   myquantit:number=0
-  totle:any=0
-  name:any
-  price:any
+  total:number=0
+  name:string = '';
+  price:number = 0 ;
+  
+  doneform=new FormGroup({
+    username:new FormControl("",[Validators.required]),
+    address:new FormControl("",[Validators.required]),
+    numcard:new FormControl("",[Validators.pattern(/[0-9]/)]),
 
+  })
 
+  isSubmit:boolean=false 
+  get username(){return this.doneform.get('username')}
+  get address(){return this.doneform.get('address')}
+  get numcard(){return this.doneform.get('numcard')}
   
 
   
   constructor(private carserv:CartService,private formbuilder:FormBuilder,private route:Router){}
-      items=this.carserv.getItems()
-      checkoutForm = this.formbuilder.group({
-        name: '',
-        address: '',
-        numcard:''
-      });
-  
+      
   ngOnInit():void{
  
     this.getProductdetalisToCart()
     this.getProductToCart()
   }
+ 
   getProductToCart(){
 
     if("cart" in localStorage){
@@ -48,26 +53,44 @@ export class CartComponent{
   }
 
   getCartTotel(){
-    this.totle=0
+    this.total=0
     for(let y in this.cardpro){
-      this.totle+=this.cardpro[y].item.price * this.cardpro[y].quantity
+      this.total+=this.cardpro[y].item.price * this.cardpro[y].quantity
+     
     }
+   
+    
+    
+  }
+  detcted(){
+    this.getCartTotel()
+    localStorage.setItem("cart",JSON.stringify(this.cardpro))
+  
   }
 
+
   plas(i:number){
-   //this.cardpro[i].quantity++
+  //   this.cardpro[i].quantity++
+  //   localStorage.setItem("cart",JSON.stringify(this.cardpro))
+
+  //  this.getCartTotel()
+
+ 
+   this.cardpro[i].quantity++
    this.getCartTotel()
    localStorage.setItem("cart",JSON.stringify(this.cardpro))
   }
   minus(i:number){
-  //this.cardpro[i].quantity--
+   
+  this.cardpro[i].quantity--
   this.getCartTotel()
   localStorage.setItem("cart",JSON.stringify(this.cardpro))
+  
   }
 
   deletme(id:number){
-    let index=this.cardpro.findIndex(i=>i.id===id);
-    this.cardpro.splice(index,1)
+    
+    this.cardpro.splice(id,1)
     alert(" this product will be deleted")
     this.getCartTotel()
     localStorage.setItem("cart",JSON.stringify(this.cardpro))
@@ -85,18 +108,26 @@ export class CartComponent{
       this.getCartTotel()
 
   }
-  onSubmit():void{
+  handel(){
     // this.items = this.carserv.clearCart();
     // console.warn('Your order has been submitted', this.checkoutForm.value);
     // this.checkoutForm.reset();
-     if(!this.name){
-      alert("you must enter your name")
-     }
+     console.log(this.doneform)
+     this.isSubmit=true
   }
 
   final(){
-     this.route.navigate(['/donecheckout'],{queryParams:{data:this.name}})
+  
+    if(this.isSubmit){
+        this.route.navigate(['/donecheckout'],{queryParams:{data:this.name}})
+
+     
+    }else{
+      alert("You Should Enter Your Data In The First...")
+    }
+    return ""
      
   }
+ 
   
 }

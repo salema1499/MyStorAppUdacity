@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input,OnInit, Output } from '@angular/core';
+import Product from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-productalone',
@@ -8,7 +9,14 @@ import { Component, EventEmitter, Input,OnInit, Output } from '@angular/core';
 export class ProductaloneComponent {
 
 
- @Input() product:any={}
+ @Input() product:Product = {
+  image:'',
+  price:'',
+  title:'',
+  id:-1,
+  descrption:'',
+  
+ };
 
   @Output() item=new EventEmitter();
   myquantity:number=0
