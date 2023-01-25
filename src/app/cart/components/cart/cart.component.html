@@ -26,7 +26,7 @@
                       <button class="btn btn-dark text-warning" style="width: 25%; height: 25%;" (click)="plas(i)" >
                         <h2>+</h2>
                       </button>
-                      <input id="form1"  min="0" name="quantity" value="1" type="number"
+                      <input id="form1"  min=0  name="quantity" value="1" type="number"
                         class="form-control form-control-sm" (ngModelChange)="plas(i)"  (ngModelChange)="minus(i)" (change)="detcted()" [(ngModel)]="item.quantity" />
                         <button class="btn btn-dark text-warning"   style="width: 25%; height: 25%;" (click)="minus(i)">
                         <h2>-</h2>

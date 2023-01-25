@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class CartComponent{
    
   cardpro:any[]=[]
-  myquantit:number=0
+  myquantit:number=1
   total:number=0
   name:string = '';
   price:number = 0 ;
@@ -34,17 +34,13 @@ export class CartComponent{
   constructor(private carserv:CartService,private formbuilder:FormBuilder,private route:Router){}
       
   ngOnInit():void{
- 
     this.getProductdetalisToCart()
     this.getProductToCart()
   }
  
   getProductToCart(){
-
     if("cart" in localStorage){
       this.cardpro=JSON.parse(localStorage.getItem('cart')!)
-      //let check=this.cardpro.find(item=>item.id==event.item.id)
-
     }
     console.log("dadat",this.cardpro)
     console.log("dadat",this.cardpro)
@@ -52,16 +48,17 @@ export class CartComponent{
 
   }
 
+
   getCartTotel(){
     this.total=0
     for(let y in this.cardpro){
       this.total+=this.cardpro[y].item.price * this.cardpro[y].quantity
      
     }
-   
-    
     
   }
+
+
   detcted(){
     this.getCartTotel()
     localStorage.setItem("cart",JSON.stringify(this.cardpro))
@@ -70,63 +67,62 @@ export class CartComponent{
 
 
   plas(i:number){
-  //   this.cardpro[i].quantity++
-  //   localStorage.setItem("cart",JSON.stringify(this.cardpro))
-
-  //  this.getCartTotel()
-
- 
    this.cardpro[i].quantity++
    this.getCartTotel()
    localStorage.setItem("cart",JSON.stringify(this.cardpro))
   }
+
+
   minus(i:number){
-   
-  this.cardpro[i].quantity--
-  this.getCartTotel()
-  localStorage.setItem("cart",JSON.stringify(this.cardpro))
-  
+    const done=1
+    this.cardpro[i].quantity--
+    if(this.cardpro[i].quantity===0){
+      let ask = prompt("this item quantity will be 0 it will delete from your cart ..DO you need to remove this item ???");
+      if (ask != null) {
+         this.cardpro.splice(i,1)
+    }
+  }
+  if(this.cardpro[i].quantity<0){
+    this.cardpro.splice(i,1)
+    alert("it will deleted..")
+  }
+    this.getCartTotel()
+    localStorage.setItem("cart",JSON.stringify(this.cardpro))
+    
   }
 
   deletme(id:number){
-    
     this.cardpro.splice(id,1)
     alert(" this product will be deleted")
     this.getCartTotel()
     localStorage.setItem("cart",JSON.stringify(this.cardpro))
  
   }
-  getProductdetalisToCart(){
 
+
+  getProductdetalisToCart(){
     if("cart" in localStorage){
       this.cardpro=JSON.parse(localStorage.getItem('cart')!)
-      //let check=this.cardpro.find(item=>item.id==event.item.id)
-
     }
     console.log("dadat",this.cardpro)
     console.log("dadat",this.cardpro)
       this.getCartTotel()
 
   }
+
+
   handel(){
-    // this.items = this.carserv.clearCart();
-    // console.warn('Your order has been submitted', this.checkoutForm.value);
-    // this.checkoutForm.reset();
      console.log(this.doneform)
      this.isSubmit=true
   }
 
   final(){
-  
     if(this.isSubmit){
         this.route.navigate(['/donecheckout'],{queryParams:{data:this.name}})
-
-     
     }else{
       alert("You Should Enter Your Data In The First...")
     }
     return ""
-     
   }
  
   

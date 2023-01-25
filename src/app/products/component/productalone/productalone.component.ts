@@ -19,7 +19,7 @@ export class ProductaloneComponent {
  };
 
   @Output() item=new EventEmitter();
-  myquantity:number=0
+  myquantity:number=1
  
   ngOnInit():void {
 
