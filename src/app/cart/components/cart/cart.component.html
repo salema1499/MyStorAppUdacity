@@ -79,6 +79,7 @@
                               FullName Is Require
                         </div>
                         
+                        
                       </div>
                     </div>
                     <div class="form-outline">
@@ -92,12 +93,13 @@
                     
                     </div>
                     <div class="form-outline">
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg"  formControlName="numcard" required/>
+                      <input type="text" id="form3Examplea2" min=16 max=16 class="form-control form-control-lg"  formControlName="numcard" required/>
                       <label class="form-label" for="form3Examplea2"> Credit Card Number</label>
                       <div class="alert alert-danger" *ngIf="isSubmit && numcard?.invalid">
-                        <div *ngIf="numcard?.errors?.['pattern']">
-                          Credit Card Is must have only numbers 
-                        </div>
+                        <p *ngIf="numcard?.errors?.['required']">
+                          Credit Card Is required 
+                        </p>
+                        
                         
                       </div>
                       
