@@ -93,7 +93,7 @@
                     
                     </div>
                     <div class="form-outline">
-                      <input type="text" id="form3Examplea2" min=16 max=16 class="form-control form-control-lg"  formControlName="numcard" required/>
+                      <input type="text" id="form3Examplea2" min=16 max=16 class="form-control form-control-lg" (keypress)="allowNumericDigitsOnlyOnKeyUp($event)" formControlName="numcard" required/>
                       <label class="form-label" for="form3Examplea2"> Credit Card Number</label>
                       <div class="alert alert-danger" *ngIf="isSubmit && numcard?.invalid">
                         <p *ngIf="numcard?.errors?.['pattern']">

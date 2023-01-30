@@ -1,4 +1,4 @@
-import { Component,OnInit} from '@angular/core';
+import { Component,OnInit,ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import { FormBuilder } from '@angular/forms';
@@ -16,7 +16,7 @@ export class CartComponent{
   total:number=0
   name:string = '';
   price:number = 0 ;
-  
+  msg: string=""
   doneform=new FormGroup({
     username:new FormControl("",[Validators.required]),
     address:new FormControl("",[Validators.required]),
@@ -47,6 +47,8 @@ export class CartComponent{
      this.getCartTotel()
 
   }
+  
+  
 
 
   getCartTotel(){
@@ -123,7 +125,17 @@ export class CartComponent{
       alert("You Should Enter Your Data In The First...")
     }
     return ""
-  }
+  } 
+
+
+  allowNumericDigitsOnlyOnKeyUp(e:any) {		
+		console.log(e.target.value);
+		
+		if(/\D/g.test(e.target.value)) {
+			e.target.value = e.target.value.replace(/\D/g,"");
+    
+		}
+	}
  
   
 }
