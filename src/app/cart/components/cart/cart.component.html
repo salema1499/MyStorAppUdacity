@@ -96,8 +96,8 @@
                       <input type="text" id="form3Examplea2" min=16 max=16 class="form-control form-control-lg"  formControlName="numcard" required/>
                       <label class="form-label" for="form3Examplea2"> Credit Card Number</label>
                       <div class="alert alert-danger" *ngIf="isSubmit && numcard?.invalid">
-                        <p *ngIf="numcard?.errors?.['required']">
-                          Credit Card Is required 
+                        <p *ngIf="numcard?.errors?.['pattern']">
+                          Credit Card must be only 16 number 
                         </p>
                         
                         

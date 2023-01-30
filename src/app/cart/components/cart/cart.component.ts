@@ -20,7 +20,7 @@ export class CartComponent{
   doneform=new FormGroup({
     username:new FormControl("",[Validators.required]),
     address:new FormControl("",[Validators.required]),
-    numcard:new FormControl("",[Validators.required]),
+    numcard:new FormControl("",[Validators.pattern("[1-9]{16}")]),
 
   })
 
